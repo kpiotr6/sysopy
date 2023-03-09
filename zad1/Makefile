@@ -2,7 +2,6 @@ main_st:memory.a
 	gcc -o main main.c -L. libmemory.a
 main_sh:memory.so
 	gcc -o main main.c -L. libmemory.so
-	export LD_LIBRARY_PATH=/home/kpiotr6/Sysopy/zad1
 memory.o_sh:
 	gcc -fPIC -c memory.c
 memory.o_st:

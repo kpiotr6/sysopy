@@ -1,7 +1,7 @@
 #include<stdio.h>
 
 int main(){
-    create();
-    read(create(),"main.c");
+    
+    // printf("lol");
     return 0;
 }
