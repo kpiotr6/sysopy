@@ -22,10 +22,9 @@ void load_library(){
     void* lib = dlopen(path,RTLD_LAZY);
     *(void **) (&init) = dlsym(lib,"init");
     *(void **) (&count) = dlsym(lib,"count");
-    *(void **) (&show) = dlsym(lib,"delete_all");
+    *(void **) (&show) = dlsym(lib,"show");
     *(void **) (&delete_all) = dlsym(lib,"delete_all");
     *(void **) (&destroy) = dlsym(lib,"destroy");
-
 }
 #else
 Memory* init(int s);
@@ -33,7 +32,4 @@ void count(Memory* m,char* name);
 char* show(Memory *m, int i);
 void delete_all(Memory *m,int j);
 void destroy(Memory *m);
-void load_library(){
-    // printf("sha");
-}
 #endif

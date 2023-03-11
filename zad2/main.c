@@ -1,6 +1,8 @@
 #include<string.h>
 #include<stdio.h>
 #include<regex.h>
+#include<time.h>
+#include<sys/times.h>
 #include "../zad1/memory.h"
 #define COMMAND_NUM 7
 
@@ -24,7 +26,9 @@ Option  commands[] = {
     END,
     ERROR
 };
+
 Memory* m;
+int exists = 0;
 
 
 
@@ -41,7 +45,6 @@ regex_t* get_regex(){
 
 Option get_command(const char *line,regex_t *reg){
     for(int i=0;i<COMMAND_NUM-1;i++){
-        // printf("lol2");
         if(!regexec(reg+i,line,0,NULL,0)){
             return commands[i];
         }
@@ -56,66 +59,97 @@ char* get_nth_word(char* line, int n){
     while(word){
         i++;
         if(i==n){
-            // printf("%s\n",word);
             last = word;
         }
         word = strtok(NULL," \t\n");
     }
-    // printf(last);
     return last;
 }
 
 char* exe_command(Option command, char* line){
     int val;
     char* word;
-    switch (command)
-    {
-    case INIT:
-        // printf(get_nth_word(line,2));
-        val = atoi(get_nth_word(line,2));
-        m = init(val);
-        break;
-    case COUNT:
-        word = get_nth_word(line,2);
-        // word[strlen(word)-1]='\0';
-        // printf("%s",word);
-        count(m,get_nth_word(line,2));
-        break;
-    case SHOW:
-        val = atoi(get_nth_word(line,2));
-        return show(m,val);
-        break;
-    case DELETE:
-        val = atoi(get_nth_word(line,3));
-        delete_all(m,val);
-        break;
-    case DESTROY:
-        destroy(m);     
-        break;
-    case END:
-        break;
-    case ERROR:
-        return "ERROR";
-        break;
+    if(!exists && command!=INIT){
+        fprintf(stderr,"Memory is not allocated. Use INIT\n");
+    }
+    else{
+        switch (command)
+            {
+            case INIT:
+                if(exists){
+                    destroy(m);
+                }
+                val = atoi(get_nth_word(line,2));
+                m = init(val);
+                exists = 1;
+                break;
+            case COUNT:
+                count(m,get_nth_word(line,2));
+                break;
+            case SHOW:
+                val = atoi(get_nth_word(line,2));
+                return show(m,val);
+                break;
+            case DELETE:
+                val = atoi(get_nth_word(line,3));
+                delete_all(m,val);
+                break;
+            case DESTROY:
+                destroy(m);
+                exists = 0;  
+                break;
+        }
     }
     return "";
 }
 
 int main(){
-    load_library();
-    // count(init(30),"Makefile");
+
     regex_t *reg;
     Option command;
     char buff[BUFFER];
+    char* com;
+    struct tms b;
+    clock_t usb,usa,syb,sya,reb,rea;
+    struct timespec tb,ta;
+    #ifdef DYNAMIC
+    load_library();
+    #endif
     reg = get_regex();
     while(1){
+
         fgets(buff,BUFFER,stdin);
+        times(&b);
+        clock_gettime(CLOCK_REALTIME,&tb);
+        // reb = clock();
+        
+        usb = b.tms_utime;
+        syb = b.tms_stime;
         command = get_command(buff,reg);
-        // printf("%d",command);
         if(command==END){
             return 0;
         }
+        if(command==ERROR){
+            fprintf(stderr,"There is no such command\n");
+        }
+        // sleep(5);
+        // for(long int i = 0;i<1000000000;i++){
+
+        // }
+        times(&b);
+        clock_gettime(CLOCK_REALTIME,&ta);
+        
+        rea = clock();
+        usa = b.tms_utime;
+        sya = b.tms_stime;
         printf("%s",exe_command(command,buff));
+        clock_gettime(CLOCK_REALTIME,&ta);
+        rea = (ta.tv_sec - tb.tv_sec)*CLOCKS_PER_SEC+((ta.tv_nsec - tb.tv_nsec)/1000000000.0)*CLOCKS_PER_SEC;
+        // printf("%ld",rea);
+        printf("CPU time\n");
+        printf("User time:%ld\n",usa-usb);
+        printf("System time:%ld\n",sya-syb);
+        printf("Real time:%ld\n",rea);
     }
     free(reg); 
     return 0;

@@ -7,11 +7,9 @@
 
 
 Memory* init(int s){
-    // printf("a");
     Memory* m = calloc(1,sizeof(Memory));
     m->blocks = calloc(s,sizeof(char*));
     m->max = s;
-    // printf("%d",m->max);
     m->current = 0;
     return m;
 }
@@ -23,17 +21,19 @@ void count(Memory* m,char* name){
     char *buffer = calloc(name_len,sizeof(char));
     char *word;
     if(m->current==m->max){
+        // fprintf(stderr,"No free blocks");
+
         return;
     }
 
     buffer[0]='\0';
     snprintf(buffer,name_len,"wc %s > /tmp/words",name);
-    // printf(buffer);
     system(buffer);
     buffer=realloc(buffer,BUFFER*sizeof(char));
     file = fopen("/tmp/words","r");
     if(!file){
         return;
+        fprintf(stderr,"Unable to create file\n");
     }
     fgets(buffer,BUFFER,file);
     fclose(file);
@@ -45,8 +45,9 @@ void count(Memory* m,char* name){
 }
 
 char* show(Memory *m, int i){
-        // printf("c");
-    if(m->current<i && m->current<0){
+    if(m->current-1<i || m->current<0){
+        fprintf(stderr,"Block does not exist\n");
+
         return "";
     }
     return m->blocks[i];
@@ -54,9 +55,9 @@ char* show(Memory *m, int i){
 }
 
 void delete_all(Memory *m,int j){
-        // printf("d");
     int to_move;
-    if(m->current<j && m->current<0){
+    if(m->current-1<j || m->current<0){
+        fprintf(stderr,"Block does not exist\n");
         return;
     }
     to_move = m->current - j;
@@ -75,7 +76,6 @@ void destroy(Memory *m){
     }
     free(m->blocks);
     free(m);
-
 }
 
 #endif
