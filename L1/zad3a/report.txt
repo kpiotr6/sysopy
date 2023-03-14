@@ -1,0 +1,4 @@
+Wyniki są dosc niejednoznaczne. W ogolnosci mozemy stwierdzic, ze 
+biblioteki wspoldzielone są najwolniejsze w uzyciu. Na 
+podstawie testow nie udalo się stwierdzic czy bardziej wydajne są 
+biblioteki dynamicznie ladowane czy statyczne.
