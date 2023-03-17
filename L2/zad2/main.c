@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <time.h>
 #include <string.h>
+
 #define BUFFER 1024
 
 void reverse_one(char* from,char* to){
@@ -30,15 +31,14 @@ void reverse_buff(char* from,char* to){
     FILE* f = fopen(from,"rb");
     FILE* t = fopen(to,"wb");
     char buff[BUFFER];
-    int rest = ftell(f);
+    long rest;
+
     fseek(f,0,SEEK_END);
-    rest = ftell(f);
-    while(!fseek(f,-1024,SEEK_CUR)){
-        rest = ftell(f);
+    while(!fseek(f,-BUFFER,SEEK_CUR)){
         fread(buff,sizeof(char),BUFFER,f);
         flip(buff,BUFFER);
         fwrite(buff,sizeof(char),BUFFER,t);
-        fseek(f,-1024,SEEK_CUR);
+        fseek(f,-BUFFER,SEEK_CUR);
     }
     rest = ftell(f);
     if(rest>0){

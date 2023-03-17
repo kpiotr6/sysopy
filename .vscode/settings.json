@@ -1,6 +1,15 @@
 {
     "files.associations": {
         "unistd.h": "c",
-        "stdio.h": "c"
-    }
+        "stdio.h": "c",
+        "ftw.h": "c"
+    },
+    "C_Cpp.errorSquiggles": "disabled",
+    "makefile.launchConfigurations": [
+        {
+            "cwd": "/home/kmp/programowanie/Sysopy/L2/zad3",
+            "binaryPath": "/home/kmp/programowanie/Sysopy/L2/zad3/main",
+            "binaryArgs": []
+        }
+    ]
 }

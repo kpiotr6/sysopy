@@ -1,2 +1,2 @@
-One CPU time: 19319
-Buffer CPU time: 540
+One CPU time: 19238
+Buffer CPU time: 516
