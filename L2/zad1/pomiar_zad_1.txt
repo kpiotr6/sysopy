@@ -1,2 +1,0 @@
-SYS CPU time: 2556
-LIB CPU time: 2744
