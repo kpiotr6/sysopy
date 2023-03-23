@@ -10,7 +10,7 @@ typedef struct dirent dirent_t;
 long long sum = 0;
 
 int check(const char* path,const stat_t* file_stat,int type){
-    if(type==FTW_F){
+    if(type!=FTW_D){
         printf("%15ld %15s\n",file_stat->st_size,path);
         sum += file_stat->st_size;
     }
@@ -19,7 +19,8 @@ int check(const char* path,const stat_t* file_stat,int type){
 }
 
 int (*check_fun)(const char* ,const stat_t* ,int) = check;
+
 int main(int argc,char* argv[]){
-    ftw(argv[1],check_fun,4096);
+    ftw(argv[1],check_fun,10);
     printf("Sumaryczny rozmiar: %lld\n",sum);
 }
