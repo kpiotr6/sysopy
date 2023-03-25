@@ -7,8 +7,8 @@
 int main(int argc,char *argv[]){
     int fvalue;
     if(argc!=2){
-        perror("Wrong number of arguments");
-        return 1;
+        fprintf( stderr, "Wrong number of arguments\n");
+        return -1;
     }
     for(int i = 0;i<atoi(argv[1]);i++){
         fvalue = fork();
