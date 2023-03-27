@@ -11,8 +11,8 @@ int main(int argc,char *argv[]){
         fprintf( stderr, "Wrong number of arguments\n");
         return -1;
     }
-    printf("%s\n",argv[0]);
+    printf("%s",argv[0]);
     fflush(stdout);
-    execl("/bin/ls","-l",argv[1],(char *)0);
+    execl("/bin/ls","ls",argv[1],(char *)0);
     return 0;
 }
