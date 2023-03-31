@@ -1,0 +1,9 @@
+{
+    "files.associations": {
+        "stdio.h": "c",
+        "wait.h": "c",
+        "array": "c",
+        "string_view": "c",
+        "type_traits": "c"
+    }
+}

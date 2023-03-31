@@ -1,0 +1,12 @@
+fork:
+Proces potomny otrzymuje maski, oraz sposób obsługi sygnałów po rodzicu. 
+ignore -> proces potomny ignoruje ten sam sygnał co rodzic
+handler -> proces potomny wywołuje tą samą funkcję co rodzic
+mask -> proces potomny blokuje ten sam sygnał co rodzic
+pending -> proces potomny nie otrzymuje listy oczekujących sygnałów po rodzicu
+
+exec:
+Podobnie jak dla procesu potomnego, ale dodatkowo proces wciąż posiada te same oczekujące sygnały.
+ignore -> proces wciąż ignore sygnał
+mask -> proces wciąż blokuje sygnał
+pending -> proces wciąż posiada ten sam oczekujących sygnał
