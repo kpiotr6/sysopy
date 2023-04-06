@@ -5,7 +5,7 @@
             "type": "cppdbg",
             "request": "launch",
             "program": "${fileDirname}/${fileBasenameNoExtension}",
-            "args": ["/home/kpiotr6/Sysopy/L3","lol"],
+            "args": ["0.01","3"],
             "stopAtEntry": false,
             "cwd": "${fileDirname}",
             "environment": [],
