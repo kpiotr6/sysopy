@@ -13,7 +13,7 @@
 
 char error[BUFFER+PATH_MAX];
 
-int starts_with(char* file_path,char* pattern){
+int mstarts_with(char* file_path,char* pattern){
     char buffer[BUFFER];
     FILE* file_handle;
     file_handle = fopen(file_path,"r");
@@ -108,6 +108,7 @@ void find(char* path,char* pattern){
 int main(int argc,char *argv[]){
     if(argc!=3){
         sprintf(error,"Wrong number of arguments");
+        perror(error);
         exit(-1);
     }
     find(argv[1],argv[2]);
