@@ -6,7 +6,7 @@ memory.o_st:
 memory.a: memory.o_st
 	ar cr libmemory.a memory.o
 memory.so: memory.o_sh
-	gcc -fPIC -shared -o libmemory.so  memory.o
+	gcc  -shared -o libmemory.so  memory.o
 clean:
 	rm memory.o
 #zad2 i 3

@@ -54,6 +54,7 @@ double gather(int proc_num, double rec_len){
         sum += tmp;
     }
     close(fd);
+    unlink("/tmp/calc");
     return sum;
 }
 
@@ -69,5 +70,6 @@ int main(int argc, char* argv[]){
     clock_gettime(CLOCK_REALTIME,&end);
     time = (end.tv_sec - start.tv_sec) + (double)(end.tv_nsec - start.tv_nsec) / 1000000000;
     printf("%0.16lf %0.16lf %d %lf\n",val,rec_len,proc_num,time);
+
     return 0;
 }

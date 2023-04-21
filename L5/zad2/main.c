@@ -50,7 +50,6 @@ double gather(int proc_num, double rec_len){
             write(pipes[i][1],&tmp,sizeof(double));
             exit(0);
         }
-
     }
     for(int i=0;i<proc_num;i++){
         read(pipes[i][0],&tmp,sizeof( double));
