@@ -1,25 +1,33 @@
 {
-    "files.associations": {
-        "stdio.h": "c",
-<<<<<<< HEAD
-        "ftw.h": "c",
-        "types.h": "c",
-        "wait.h": "c",
-        "limits.h": "c"
-    },
-    "C_Cpp.errorSquiggles": "disabled",
     "makefile.launchConfigurations": [
         {
-            "cwd": "/home/kmp/programowanie/Sysopy/L2/zad3",
-            "binaryPath": "/home/kmp/programowanie/Sysopy/L2/zad3/main",
+            "cwd": "/home/kmp/programowanie/Sysopy",
+            "binaryPath": "/home/kmp/programowanie/Sysopy/main",
+            "binaryArgs": []
+        },
+        {
+            "cwd": "/home/kmp/programowanie/Sysopy",
+            "binaryPath": "/home/kmp/programowanie/Sysopy/user",
+            "binaryArgs": []
+        },
+        {
+            "cwd": "/home/kmp/programowanie/Sysopy/L6/zad1",
+            "binaryPath": "/home/kmp/programowanie/Sysopy/L6/zad1/user",
+            "binaryArgs": [
+                "446",
+                "65568"
+            ]
+        },
+        {
+            "cwd": "/home/kmp/programowanie/Sysopy/L6/zad1",
+            "binaryPath": "/home/kmp/programowanie/Sysopy/L6/zad1/server",
+            "binaryArgs": []
+        },
+        {
+            "cwd": "/home/kmp/programowanie/Sysopy/L6/zad1",
+            "binaryPath": "/home/kmp/programowanie/Sysopy/L6/zad1/user",
             "binaryArgs": []
         }
-    ]
-=======
-        "wait.h": "c",
-        "array": "c",
-        "string_view": "c",
-        "type_traits": "c"
-    }
->>>>>>> 0d83a8346c3131d20c446e746053f294e4350652
+    ],
+    "makefile.makeDirectory": "/home/kmp/programowanie/Sysopy/L6/zad1"
 }
