@@ -1,7 +1,6 @@
+
 #include"chatlim.h"
 #include<string.h>
-#include <sys/msg.h>
-#include <sys/ipc.h>
 #include <time.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -9,11 +8,13 @@
 #include <fcntl.h>
 #include <errno.h>
 #include <signal.h>
+#include <mqueue.h>
 int queue;
 int end = 0;
 int MES_SIZE = sizeof(Msgbuf)-sizeof(long);
 int id;
 int server;
+char queue_name[COMM_LEN];
 
 
 char** split_string(char* line){
@@ -47,8 +48,8 @@ void handler(int s){
     end = 1;
     msg.mtype = STOP;
     msg.id = id;
-    msgsnd(server,&msg,MES_SIZE,MSG_NOERROR);
-    msgctl(queue,IPC_RMID,NULL);
+    mq_close(queue);
+    mq_unlink(queue_name);
 }
 
 
@@ -74,8 +75,9 @@ Msgbuf parse(char* line){
             comd.id = id;
             comd.mtype = STOP;
             end = 1;
-            msgsnd(server,&comd,MES_SIZE,MSG_NOERROR);
-            msgctl(queue,IPC_RMID,NULL);
+            mq_send(server,(const char *)&comd,sizeof(Msgbuf),STOP);
+            mq_close(queue);
+            mq_unlink(queue_name);
             break;
         case ALL: 
             comd.id = id;
@@ -119,9 +121,10 @@ void analyze_message(Msgbuf *mes){
             new_mes.id = id;
             new_mes.mtype = STOP;
             end = 1;
-            msgsnd(server,&new_mes,MES_SIZE,MSG_NOERROR);
+            mq_send(server,(const char *)&mes,sizeof(Msgbuf),STOP);
             printf("Koniec pracy serwera\n");
-            msgctl(queue,IPC_RMID,NULL);
+            mq_close(queue);
+            mq_unlink(queue_name);
         break;
         case LIST:
             printf("%s",mes->mess.text);
@@ -139,33 +142,37 @@ void analyze_message(Msgbuf *mes){
             printf("Od:%d\n",mes->id);
         break;
         case INIT:
-            id = mes.mess.num;
+            id = mes->mess.num;
         break;
     }
 }
 
 int main(int argc,char* argv[]){
-    //argv[1] is client key, argv[2] is server queue
+    //argv[1] is client path
     int flags = fcntl(STDIN_FILENO, F_GETFL, 0);
     Msgbuf mes;
     char buf[2*COMM_LEN];
     char* HOME = getenv("HOME");
-    int key = atoi(argv[1]);
-    server = atoi(argv[2]); 
+    struct mq_attr attr;
+
+    attr.mq_flags = 0;
+    attr.mq_maxmsg = 10;
+    attr.mq_msgsize = sizeof(Msgbuf);
+    attr.mq_curmsgs = 0;
     signal(SIGINT,handler);
-    queue = msgget(ftok(HOME,key),IPC_CREAT|IPC_EXCL|0777);
+    sprintf(queue_name,"/%s",argv[1]);
+    queue = mq_open(queue_name,O_RDWR|O_CREAT|O_EXCL|O_NONBLOCK,0777,&attr);
+    server = mq_open("/servq",O_RDWR);
     if(queue == -1){
         perror("blad");
         exit(1);
     }
     mes.mtype = INIT;
-    mes.mess.num = queue;
+    sprintf(mes.mess.text,"%s",queue_name);
     printf("%d\n",server);
-    if(msgsnd(server,&mes,MES_SIZE,0)==-1){
+    if(mq_send(server,(const char *)&mes,sizeof(Msgbuf),INIT)==-1){
         perror("blad\n");
     };
-    msgrcv(queue,&mes,MES_SIZE,INIT,0);
-    id = mes.mess.num;
     fcntl(STDIN_FILENO, F_SETFL, flags | O_NONBLOCK);
     while(!end)
     {
@@ -173,9 +180,10 @@ int main(int argc,char* argv[]){
             strtok(buf,"\n");
             add_endl(buf);
             mes = parse(buf);
-            msgsnd(server,&mes,MES_SIZE,MSG_NOERROR);
+            mq_send(server,(const char *)&mes,sizeof(Msgbuf),mes.mtype);
+            
         }
-        if(msgrcv(queue,&mes,MES_SIZE,-MAX_TYPE,IPC_NOWAIT)!=-1){
+        if(mq_receive(queue,(char *)&mes,sizeof(Msgbuf),NULL)!=-1){
             analyze_message(&mes);
         }
         sleep(1);

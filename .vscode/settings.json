@@ -11,23 +11,31 @@
             "binaryArgs": []
         },
         {
-            "cwd": "/home/kmp/programowanie/Sysopy/L6/zad1",
-            "binaryPath": "/home/kmp/programowanie/Sysopy/L6/zad1/user",
+            "cwd": "/home/kmp/programowanie/Sysopy/L6/zad2",
+            "binaryPath": "/home/kmp/programowanie/Sysopy/L6/zad2/user",
             "binaryArgs": [
-                "446",
-                "65568"
+                "razdwa351gds"
             ]
         },
         {
-            "cwd": "/home/kmp/programowanie/Sysopy/L6/zad1",
-            "binaryPath": "/home/kmp/programowanie/Sysopy/L6/zad1/server",
+            "cwd": "/home/kmp/programowanie/Sysopy/L6/zad2",
+            "binaryPath": "/home/kmp/programowanie/Sysopy/L6/zad2/server",
             "binaryArgs": []
         },
         {
-            "cwd": "/home/kmp/programowanie/Sysopy/L6/zad1",
-            "binaryPath": "/home/kmp/programowanie/Sysopy/L6/zad1/user",
+            "cwd": "/home/kmp/programowanie/Sysopy/L6/zad2",
+            "binaryPath": "/home/kmp/programowanie/Sysopy/L6/zad2/user",
+            "binaryArgs": []
+        },
+        {
+            "cwd": "/home/kmp/programowanie/Sysopy/L6/zad2",
+            "binaryPath": "/home/kmp/programowanie/Sysopy/L6/zad2/server",
             "binaryArgs": []
         }
     ],
-    "makefile.makeDirectory": "/home/kmp/programowanie/Sysopy/L6/zad1"
+    "makefile.makeDirectory": "/home/kmp/programowanie/Sysopy/L6/zad2",
+    "files.associations": {
+        "unistd.h": "c",
+        "fcntl.h": "c"
+    }
 }
