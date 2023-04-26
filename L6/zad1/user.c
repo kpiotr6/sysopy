@@ -139,7 +139,7 @@ void analyze_message(Msgbuf *mes){
             printf("Od:%d\n",mes->id);
         break;
         case INIT:
-            id = mes.mess.num;
+            id = mes->mess.num;
         break;
     }
 }
