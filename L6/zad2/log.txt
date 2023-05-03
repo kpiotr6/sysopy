@@ -1,0 +1,7 @@
+Czas: 2023-04-25 15:49:52  ID: 0 Kod operacji: 5
+Czas: 2023-04-25 15:50:04  ID: 0 Kod operacji: 5
+Czas: 2023-04-25 15:50:07  ID: 2 Kod operacji: 2
+Czas: 2023-04-25 15:50:13  ID: 2 Kod operacji: 3 Tresc: dadad
+Czas: 2023-04-25 15:50:22  ID: 2 Kod operacji: 4 Tresc: dasdffgfg
+Czas: 2023-04-25 15:50:28  ID: 0 Kod operacji: 1
+Czas: 2023-04-25 15:50:28  ID: 0 Kod operacji: 1

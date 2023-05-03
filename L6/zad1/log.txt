@@ -1,0 +1,15 @@
+Czas: 2023-04-25 15:05:30  ID: 0 Kod operacji: 5
+Czas: 2023-04-25 15:05:35  ID: 1 Kod operacji: 2
+Czas: 2023-04-25 15:18:07  ID: 0 Kod operacji: 5
+Czas: 2023-04-25 15:18:10  ID: 2 Kod operacji: 2
+Czas: 2023-04-25 15:18:18  ID: 2 Kod operacji: 3 Tresc: lol
+Czas: 2023-04-25 15:18:28  ID: 2 Kod operacji: 1
+Czas: 2023-04-25 15:18:28  ID: 1 Kod operacji: 1
+Czas: 2023-04-25 15:45:04  ID: 0 Kod operacji: 5
+Czas: 2023-04-25 15:45:12  ID: 0 Kod operacji: 5
+Czas: 2023-04-25 15:45:15  ID: 2 Kod operacji: 2
+Czas: 2023-04-25 15:45:34  ID: 2 Kod operacji: 4 Tresc: asdasd
+Czas: 2023-04-25 15:45:45  ID: 2 Kod operacji: 4 Tresc: asdasddasfsdgfassad
+Czas: 2023-04-25 15:46:06  ID: 2 Kod operacji: 3 Tresc: dasd
+Czas: 2023-04-25 15:46:13  ID: 2 Kod operacji: 1
+Czas: 2023-04-25 15:46:14  ID: 2 Kod operacji: 1
