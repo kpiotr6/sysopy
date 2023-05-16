@@ -1,41 +1,6 @@
 {
-    "makefile.launchConfigurations": [
-        {
-            "cwd": "/home/kmp/programowanie/Sysopy",
-            "binaryPath": "/home/kmp/programowanie/Sysopy/main",
-            "binaryArgs": []
-        },
-        {
-            "cwd": "/home/kmp/programowanie/Sysopy",
-            "binaryPath": "/home/kmp/programowanie/Sysopy/user",
-            "binaryArgs": []
-        },
-        {
-            "cwd": "/home/kmp/programowanie/Sysopy/L6/zad2",
-            "binaryPath": "/home/kmp/programowanie/Sysopy/L6/zad2/user",
-            "binaryArgs": [
-                "razdwa351gds"
-            ]
-        },
-        {
-            "cwd": "/home/kmp/programowanie/Sysopy/L6/zad2",
-            "binaryPath": "/home/kmp/programowanie/Sysopy/L6/zad2/server",
-            "binaryArgs": []
-        },
-        {
-            "cwd": "/home/kmp/programowanie/Sysopy/L6/zad2",
-            "binaryPath": "/home/kmp/programowanie/Sysopy/L6/zad2/user",
-            "binaryArgs": []
-        },
-        {
-            "cwd": "/home/kmp/programowanie/Sysopy/L6/zad2",
-            "binaryPath": "/home/kmp/programowanie/Sysopy/L6/zad2/server",
-            "binaryArgs": []
-        }
-    ],
-    "makefile.makeDirectory": "/home/kmp/programowanie/Sysopy/L6/zad2",
     "files.associations": {
-        "unistd.h": "c",
-        "fcntl.h": "c"
+        "ncurses.h": "c",
+        "stdbool.h": "c"
     }
 }
