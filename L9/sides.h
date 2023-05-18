@@ -5,4 +5,5 @@
 
 void* santa();
 void* reindeer();
+void* high_elf();
 #endif
