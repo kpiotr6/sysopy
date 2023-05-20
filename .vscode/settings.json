@@ -1,5 +1,7 @@
 {
     "files.associations": {
-        "ncurses.h": "c"
+        "ncurses.h": "c",
+        "pthread.h": "c",
+        "stdbool.h": "c"
     }
 }
