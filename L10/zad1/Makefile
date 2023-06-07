@@ -2,7 +2,7 @@ CC = gcc -c
 BUILD = build
 SOURCE = src
 
-all: server user
+all:clean server user
 
 server:user_struct
 	${CC} -o ${BUILD}/server ${SOURCE}/server.c ${BUILD}/libuser_struct.a 
@@ -16,5 +16,5 @@ user_struct:
 	rm ${BUILD}/user_struct.o
 
 clean:
-	rm -r ${BUILD}
+	rm -rf ${BUILD}
 	mkdir ${BUILD}
