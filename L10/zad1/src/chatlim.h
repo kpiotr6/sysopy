@@ -1,5 +1,6 @@
 #pragma once
 #include <time.h>
+#include <poll.h>
 #define STOP 1
 #define LIST 2
 #define ALL 3
@@ -28,7 +29,8 @@ typedef struct msgbuf {
 
 typedef struct users{
     int ids[MAX_USR];
-    int queue_ids[MAX_USR];
+    int sockets[MAX_USR];
+    struct pollfd polls[MAX_USR];
     int last_id;
     int num;    
 } Users;
@@ -36,8 +38,8 @@ typedef struct users{
 
 
 Users* us_init();
-int us_add(Users *u,int qid);
+int us_add(Users *u,int fd);
 void us_remove(Users *u, int user_id);
 void us_remove_all(Users *u);
 void us_destroy(Users *u);
-int us_queue_of_id(Users *u,int uid);
+int us_fd_of_id(Users *u,int uid);
