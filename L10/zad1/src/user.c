@@ -55,6 +55,7 @@ void handler(int s)
     end = 1;
     msg.mtype = STOP;
     msg.id = id;
+    write(socket_fd, &msg, sizeof(Msgbuf));
     shutdown(socket_fd, SHUT_RDWR);
     close(socket_fd);
 }

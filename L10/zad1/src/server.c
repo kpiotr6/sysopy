@@ -259,6 +259,7 @@ int main(int argc,char* argv[]){
                         message_action(&msg,users);
                         pthread_mutex_unlock(&mutex);
                     }
+                    users->polls[i].revents = users->polls[i].revents & (~POLLIN);
                 }
             }
         }
