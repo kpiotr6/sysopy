@@ -2,6 +2,47 @@
     "files.associations": {
         "ncurses.h": "c",
         "pthread.h": "c",
-        "stdbool.h": "c"
-    }
+        "stdbool.h": "c",
+        "cstdlib": "c",
+        "in.h": "c",
+        "socket.h": "c",
+        "un.h": "c",
+        "stdio.h": "c"
+    },
+    "makefile.makefilePath": "${workspaceFolder}/L10/zad1/Makefile",
+    "makefile.configurations": [
+        {
+            "name": "Default",
+            "makeArgs": []
+        },
+        {
+            "name": "Print make version",
+            "makeArgs": ["--version"]
+        }
+    ],
+    "makefile.makeDirectory": "${workspaceFolder}/L10/zad1",
+    "makefile.compileCommandsPath": "${workspaceFolder}/L10/zad1/build/server",
+    "makefile.launchConfigurations": [
+        {
+           "cwd": "${workspaceFolder}/L10/zad1/build",
+           "binaryPath": "${workspaceFolder}/L10/zad1/build/server",
+           "binaryArgs": [
+              "30001",
+              "./abc"
+           ],
+           "stopAtEntry": true
+        },
+        {
+            "cwd": "${workspaceFolder}/L10/zad1/build",
+            "binaryPath": "${workspaceFolder}/L10/zad1/build/user",
+            "binaryArgs": [
+               "name",
+               "local",
+               "./abc",
+               "ss"
+            ],
+            "stopAtEntry": true
+         }
+      ],
+     
 }
